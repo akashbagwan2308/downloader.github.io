@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Video Downloader</h1>
+
+        <form action="/download" method="post">
+            <label for="video_url">Enter the YouTube video URL:</label>
+            <input type="text" name="video_url" required>
+
+            <label for="output_path">Enter the output path (default is current directory):</label>
+            <input type="text" name="output_path" value="">
+
+            <!-- <button type="submit">Download Video</button> -->
+            <button id="download_video" class="btn"><i class="fa fa-download"></i> Download Video</button>
+            <p></p>
+            <div id="loader" class="loader" style="display: none;"></div>
+        </form>
+
+
+
+<script>
+    document.getElementById("download_video").addEventListener("click", function() {
+        // Show the loader
+        document.getElementById("loader").style.display = "block";
+
+        // Optionally, you can disable the button to prevent multiple clicks
+        this.disabled = false;
+
+        // Submit the form (if needed)
+        // document.getElementById("download_video").submit();
+    });
+</script>
+
+
+        <form action="/download_playlist" method="post">
+            <label for="playlist_url">Enter the YouTube playlist URL:</label>
+            <input type="text" name="playlist_url" required>
+
+            <label for="output_path_playlist">Enter the output path for the playlist (default is current directory):</label>
+            <input type="text" name="output_path_playlist" value="">
+
+            <!-- <button type="submit">Download Playlist</button> -->
+            <button id="download_playlist" class="btn"><i class="fa fa-download"></i> Download Playlist</button>
+            <p></p>
+            <div id="loader2" class="loader" style="display: none;" ></div>
+
+        </form>
+<script>
+    document.getElementById("download_playlist").addEventListener("click", function() {
+        // Show the loader
+        document.getElementById("loader2").style.display = "block";
+
+        // Optionally, you can disable the button to prevent multiple clicks
+        this.disabled = false;
+
+        // Submit the form (if needed)
+        //document.getElementById("download_playlist").submit();
+    });
+</script>
+
+
+        <p>Note: Downloading YouTube videos may violate YouTube's terms of service. Make sure to comply with their policies.</p>
+    </div>
+</body>
+</html>
